@@ -1,6 +1,7 @@
 package emg.taco.tacocloud.controller
 
-import TacoOrder
+import emg.taco.tacocloud.data.repository.OrderRepository
+import emg.taco.tacocloud.model.TacoOrder
 import mu.KotlinLogging
 import org.springframework.stereotype.Controller
 import org.springframework.validation.Errors
@@ -16,7 +17,7 @@ private val log = KotlinLogging.logger {}
 @Controller
 @RequestMapping("/orders")
 @SessionAttributes("tacoOrder")
-class OrderController {
+class OrderController(val orderRepository: OrderRepository) {
     @GetMapping("/current")
     fun orderForm(): String {
         return "orderForm"
@@ -29,6 +30,7 @@ class OrderController {
         }
 
         log.info { "Processing order: $tacoOrder" }
+        orderRepository.save(tacoOrder)
         sessionStatus.setComplete()
         return "redirect:/"
     }

@@ -1,8 +1,9 @@
 package emg.taco.tacocloud.controller
 
-import Ingredient
-import Taco
-import TacoOrder
+import emg.taco.tacocloud.data.repository.IngredientRepository
+import emg.taco.tacocloud.model.Ingredient
+import emg.taco.tacocloud.model.Taco
+import emg.taco.tacocloud.model.TacoOrder
 import mu.KotlinLogging
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -16,20 +17,10 @@ private val log = KotlinLogging.logger {}
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("tacoOrder")
-class DesignTacoController {
+class DesignTacoController(val ingredientRepository: IngredientRepository) {
     @ModelAttribute
     fun addIngredientsToModel(model: Model) {
-        val ingredients = listOf<Ingredient>().toMutableList()
-        ingredients += Ingredient("FLTO", "Flour Tortilla", Ingredient.Type.WRAP)
-        ingredients += Ingredient("COTO", "Corn Tortilla", Ingredient.Type.WRAP)
-        ingredients += Ingredient("GRBF", "Ground Beef", Ingredient.Type.PROTEIN)
-        ingredients += Ingredient("CARN", "Carnitas", Ingredient.Type.PROTEIN)
-        ingredients += Ingredient("TMTO", "Diced Tomatoes", Ingredient.Type.VEGGIES)
-        ingredients += Ingredient("LETC", "Lettuce", Ingredient.Type.VEGGIES)
-        ingredients += Ingredient("CHED", "Cheddar", Ingredient.Type.CHEESE)
-        ingredients += Ingredient("JACK", "Monterrey Jack", Ingredient.Type.CHEESE)
-        ingredients += Ingredient("SLSA", "Salsa", Ingredient.Type.SAUCE)
-        ingredients += Ingredient("SRCR", "Sour Cream", Ingredient.Type.SAUCE)
+        val ingredients = ingredientRepository.findAll().toList()
 
         val types = Ingredient.Type.values()
         types.forEach { type ->
