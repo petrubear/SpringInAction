@@ -6,8 +6,10 @@ import TacoOrder
 import mu.KotlinLogging
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.validation.Errors
 import org.springframework.web.bind.annotation.*
 import java.util.*
+import javax.validation.Valid
 
 private val log = KotlinLogging.logger {}
 
@@ -56,7 +58,10 @@ class DesignTacoController {
 
 
     @PostMapping
-    fun processTaco(taco: Taco, @ModelAttribute tacoOrder: TacoOrder): String {
+    fun processTaco(@Valid taco: Taco, errors: Errors, @ModelAttribute tacoOrder: TacoOrder): String {
+        if (errors.hasErrors()) {
+            return "design"
+        }
         log.info("Processing Taco: $taco")
         tacoOrder.addTaco(taco)
         return "redirect:/orders/current"
