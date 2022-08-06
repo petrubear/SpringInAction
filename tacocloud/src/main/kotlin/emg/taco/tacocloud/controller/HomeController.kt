@@ -1,12 +1,9 @@
 package emg.taco.tacocloud.controller
 
-import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.GetMapping
-
-@Controller
+//@Controller
 class HomeController {
 
-    @GetMapping("/")
+//    @GetMapping("/")
     fun home(): String {
         return "home"
     }
