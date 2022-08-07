@@ -17,7 +17,7 @@ private val log = KotlinLogging.logger {}
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("tacoOrder")
-class DesignTacoController(val ingredientRepository: IngredientRepository) {
+class DesignTacoController(private val ingredientRepository: IngredientRepository) {
     @ModelAttribute
     fun addIngredientsToModel(model: Model) {
         val ingredients = ingredientRepository.findAll().toList()

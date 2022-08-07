@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Pattern
 
 @Entity
+@Table(name = "Taco_Order")
 class TacoOrder(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,7 +45,10 @@ class TacoOrder(
     @OneToMany(cascade = [javax.persistence.CascadeType.ALL])
     var tacos: MutableList<Taco> = mutableListOf(),
 
-    var placedAt: Date = Date()
+    var placedAt: Date = Date(),
+
+    @ManyToOne
+    var user: User? = null
 ) : Serializable {
     companion object {
         private val serialVersionUid: Long = 1
