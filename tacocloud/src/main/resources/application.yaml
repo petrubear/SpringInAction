@@ -1,3 +1,9 @@
+server:
+  port: 8443
+  ssl:
+    key-store: file:///opt/misc/tacos/mykeys.jks
+    key-store-password: letmein
+    key-password: letmein
 spring:
   devtools:
     livereload:
