@@ -5,6 +5,9 @@ server:
     key-store-password: letmein
     key-password: letmein
 spring:
+  profiles:
+    active:
+      - dev
   devtools:
     livereload:
       enabled: true
@@ -17,3 +20,36 @@ taco:
   orders:
     pageSize: 10
 
+logging:
+  level:
+    root: ERROR
+    emg:
+      tacos: ERROR
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+logging:
+  level:
+    root: INFO
+    emg:
+      taco: DEBUG
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql:/ /localhost/tacocloud
+    username: tacouser
+    password: tacopassword
+
+logging:
+  level:
+    root: WARN
+    emg:
+      taco: WARN
