@@ -7,6 +7,7 @@
         </encoder>
     </appender>
     <logger name="root" level="INFO"/>
+    <logger name="emg.taco" level="DEBUG"/>
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
