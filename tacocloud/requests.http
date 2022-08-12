@@ -1,0 +1,15 @@
+### Get recent Tacos
+GET {{host}}/{{apiUrl}}/tacos/recent
+Accept: application/json
+
+### Get taco by id
+GET {{host}}/{{apiUrl}}/tacos/3
+Accept: application/json
+
+### Get taco not found
+GET {{host}}/{{apiUrl}}/tacos/3998
+Accept: application/json
+
+### Get all ingredients
+GET {{host}}/{{apiUrl}}/ingredients/all
+Accept: application/json

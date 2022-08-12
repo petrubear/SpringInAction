@@ -1,37 +1,26 @@
 server:
   port: 8443
-  ssl:
-    key-store: file:///opt/misc/tacos/mykeys.jks
-    key-store-password: letmein
-    key-password: letmein
 spring:
   profiles:
     active:
       - dev
-  devtools:
-    livereload:
-      enabled: true
-  thymeleaf:
-    cache: false
-  datasource:
-    generate-unique-name: false
-    name: tacocloud
 taco:
   orders:
     pageSize: 10
-
-logging:
-  level:
-    root: ERROR
-    emg:
-      tacos: ERROR
 
 ---
 spring:
   config:
     activate:
       on-profile: dev
-
+  thymeleaf:
+    cache: false
+  datasource:
+    generate-unique-name: false
+    name: tacocloud
+  devtools:
+    livereload:
+      enabled: true
 logging:
   level:
     root: INFO
@@ -47,7 +36,11 @@ spring:
     url: jdbc:mysql:/ /localhost/tacocloud
     username: tacouser
     password: tacopassword
-
+server:
+  ssl:
+    key-store: file:///opt/misc/tacos/mykeys.jks
+    key-store-password: letmein
+    key-password: letmein
 logging:
   level:
     root: WARN
