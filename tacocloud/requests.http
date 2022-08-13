@@ -13,3 +13,15 @@ Accept: application/json
 ### Get all ingredients
 GET {{host}}/{{apiUrl}}/ingredients/all
 Accept: application/json
+
+
+## DATA API
+### List Data API endpoints
+GET {{host}}/api/
+Accept: application/json
+
+
+### List Data API tacos
+GET {{host}}/data-api/tacos?size=2&page=0&sort=createdAt,desc
+Accept: application/json
+## DATA API

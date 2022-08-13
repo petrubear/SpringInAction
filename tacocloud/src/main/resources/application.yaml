@@ -4,6 +4,9 @@ spring:
   profiles:
     active:
       - dev
+  data:
+    rest:
+      base-path: /data-api
 taco:
   orders:
     pageSize: 10

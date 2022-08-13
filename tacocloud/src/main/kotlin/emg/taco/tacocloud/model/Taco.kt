@@ -1,5 +1,6 @@
 package emg.taco.tacocloud.model
 
+import org.springframework.data.rest.core.annotation.RestResource
 import java.util.*
 import javax.persistence.*
 import javax.validation.constraints.NotNull
@@ -7,6 +8,7 @@ import javax.validation.constraints.Size
 
 
 @Entity
+@RestResource(rel = "tacos", path = "tacos")
 class Taco(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
